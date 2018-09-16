@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 @SpringBootApplication
 public class PrimaryBeansApplication {
@@ -43,7 +43,7 @@ interface Impressora {
 
 @Profile("es")
 @Primary
-@Component
+@Service
 class ImpressoraHPImpl implements Impressora {
 
 	@Override
@@ -55,7 +55,7 @@ class ImpressoraHPImpl implements Impressora {
 }
 
 @Profile("en")
-@Component
+@Service
 class ImpressoraEpsonImpl implements Impressora {
 
 	@Override
