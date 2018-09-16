@@ -1,10 +1,10 @@
 package br.com.luciano;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
@@ -25,7 +25,7 @@ class ImpressoraController {
 		
 	private Impressora impressora;
 
-	public ImpressoraController(@Qualifier("impressoraEpsonImpl") Impressora impressora) {
+	public ImpressoraController(Impressora impressora) {
 		this.impressora = impressora;
 	}
 	
@@ -41,6 +41,7 @@ interface Impressora {
 	int imprimir(String texto);
 }
 
+@Profile("es")
 @Primary
 @Component
 class ImpressoraHPImpl implements Impressora {
@@ -53,6 +54,7 @@ class ImpressoraHPImpl implements Impressora {
 	
 }
 
+@Profile("en")
 @Component
 class ImpressoraEpsonImpl implements Impressora {
 
